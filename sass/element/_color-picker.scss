@@ -1,0 +1,209 @@
+
+@import "../variables";
+
+$modulePrefix: #{$prefix}-color-picker;
+
+.#{$modulePrefix} {
+  position: relative;
+}
+
+.#{$modulePrefix}-stack {
+  .#{$modulePrefix} {
+    display: inline-block;
+    margin-left: $marginHalf;
+  }
+}
+
+.#{$modulePrefix}-popover {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  top: 2.2rem;
+}
+
+.#{$modulePrefix}-popover--top {
+  top: initial;
+  bottom: 2.2rem;
+}
+
+.#{$modulePrefix}-swatch {
+  @include simpleTransition(.2s);
+  appearance: none;
+  display: inline-block;
+  outline: none;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  height: $space;
+  width: $space;
+
+  &:hover {
+    transform: scale(1.25, 1.25);
+  }
+}
+
+.#{$modulePrefix}-component {
+  border: 1px solid $borderColor;
+  background-color: white;
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: $radius;
+  width: 15rem;
+}
+
+.#{$modulePrefix}-component-input {
+  > div {
+    border-radius: $radius $radius 0 0;
+  }
+
+  input {
+    @include baseInputStyle();
+    padding: $paddingHalf;
+    margin: 0;
+    text-align: center;
+    font-weight: $fontWeightBold;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.#{$modulePrefix}-component-saturation {
+  width: 100%;
+  padding-bottom: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.#{$modulePrefix}-component-sliders {
+  display: block;
+  padding: $paddingHalf;
+
+  > div:not(:first-child) {
+    margin-top: $marginHalf;
+  }
+
+  > div {
+    height: $marginHalf;
+    position: relative;
+  }
+}
+
+.#{$modulePrefix}-component-pointer,
+.#{$modulePrefix}-component-pointer-circle {
+  height: $paddingHalf + .1;
+  width: $paddingHalf + .1;
+  border-radius: 50%;
+}
+
+.#{$modulePrefix}-component-pointer {
+  background-color: white;
+  transform: translate(-6px, -1px);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.#{$modulePrefix}-component-pointer-circle {
+  transform: translate(-6px, -6px);
+  box-shadow: inset 0 0 0 1px;
+}
+
+.#{$modulePrefix}-component-palette {
+  border-top: 1px solid $borderColor;
+  padding: $paddingHalf;
+
+  > header {
+    display: flex;
+
+    h5 {
+      font-weight: $fontWeightBold;
+      font-size: $fontSizeTiny;
+      color: $baseFontColorLight;
+      margin: 0;
+      padding: 0 0 $paddingHalf 0;
+    }
+
+    i {
+      margin-left: auto;
+      font-size: 1rem;
+      color: $baseFontColorLight;
+    }
+  }
+
+  > section {
+    display: flex;
+    justify-content: space-between;
+
+    .#{$modulePrefix}-swatch {
+      background-color: white;
+      > div {
+        @include simpleTransition();
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+    }
+  }
+}
+
+.#{$modulePrefix}-buttons {
+  padding: $paddingHalf 0;
+  border-top: 1px solid $borderColor;
+
+  > * {
+    @include baseInputStyle();
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 $marginHalf;
+    text-transform: uppercase;
+    color: $secondary;
+    font-size: $fontSizeSmall;
+    font-weight: $fontWeightBold;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($secondary, 10%);
+    }
+  }
+}
+
+// Transition
+
+$visibleOpacity: 1;
+
+.#{$modulePrefix}-transition-appear {
+  transform: scale(0.5, 0.5);
+  opacity: 0.01;
+}
+
+.#{$modulePrefix}-transition-appear.#{$modulePrefix}-transition-appear-active {
+  opacity: $visibleOpacity;
+}
+
+.#{$modulePrefix}-transition-enter {
+  transform-origin: top right;
+  transform: scale(0.5, 0.5);
+  opacity: 0.01;
+}
+
+.#{$modulePrefix}-popover--top {
+  .#{$modulePrefix}-transition-enter {
+    transform-origin: bottom right;
+  }
+}
+
+.#{$modulePrefix}-transition-enter.#{$modulePrefix}-transition-enter-active {
+  @include transitionDecelerate();
+  opacity: $visibleOpacity;
+  transform: scale(1, 1);
+}
+
+.#{$modulePrefix}-transition-leave {
+  opacity: $visibleOpacity;
+  transform: scale(1, 1);
+}
+
+.#{$modulePrefix}-transition-leave.#{$modulePrefix}-transition-leave-active {
+  @include transitionAccelerate();
+  opacity: 0.01;
+}
+

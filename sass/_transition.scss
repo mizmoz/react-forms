@@ -1,0 +1,35 @@
+
+@import "variables";
+
+$visibleOpacity: 1;
+
+.#{$prefix}-transition-appear {
+  transform: scale(0.5, 0.5);
+  opacity: 0.01;
+}
+
+.#{$prefix}-transition-appear.#{$prefix}-transition-appear-active {
+  opacity: $visibleOpacity;
+}
+
+.#{$prefix}-transition-enter {
+  transform-origin: top right;
+  transform: scale(0.5, 0.5);
+  opacity: 0.01;
+}
+
+.#{$prefix}-transition-enter.#{$prefix}-transition-enter-active {
+  @include transitionDecelerate();
+  opacity: $visibleOpacity;
+  transform: scale(1, 1);
+}
+
+.#{$prefix}-transition-leave {
+  opacity: $visibleOpacity;
+  transform: scale(1, 1);
+}
+
+.#{$prefix}-transition-leave.#{$prefix}-transition-leave-active {
+  @include transitionAccelerate();
+  opacity: 0.01;
+}

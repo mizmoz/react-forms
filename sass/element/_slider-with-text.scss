@@ -1,0 +1,18 @@
+
+@import "../variables";
+@import "helpers";
+
+.#{$prefix}-slider-with-text {
+  position: relative;
+  display: flex;
+
+  input[type=range] {
+    margin-right: $paddingHalf;
+  }
+}
+
+.#{$prefix}-slider-with-text:not(:hover) {
+  .#{$prefix}-input-range--hidden {
+    opacity: 0;
+  }
+}

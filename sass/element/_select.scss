@@ -1,0 +1,49 @@
+
+@import "../variables";
+@import "helpers";
+
+.#{$prefix}-select {
+  position: relative;
+}
+
+.#{$prefix}-select-container {
+  position: relative;
+  display: block;
+  height: $inputHeight;
+  margin: 0;
+
+  select {
+    @include baseInputStyle();
+    outline: none;
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: $inputHeight;
+    line-height: $inputHeight;
+    background-color: transparent;
+    border: none;
+    padding-right: $padding;
+  }
+
+  .material-icons {
+    @include simpleTransition();
+    right: 0;
+    top: $paddingTiny;
+    position: absolute;
+    z-index: 0;
+    color: $baseFontColorLight;
+  }
+}
+
+.#{$prefix}--focus {
+  .#{$prefix}-select-container {
+    select {
+      @include focused();
+    }
+
+    .material-icons {
+      color: $baseFontColor;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+
+@import "../variables";
+
+$track-color: $borderColor !default;
+$thumb-color: $baseFontColor !default;
+$active-color: $secondary !default;
+
+$thumb-radius: 50%;
+$thumb-height: $paddingHalf;
+$thumb-width: $paddingHalf;
+$track-width: 100% !default;
+$track-height: 2px !default;
+
+@mixin track() {
+  width: $track-width;
+  height: $track-height;
+  cursor: pointer;
+  transition: all .2s ease;
+  background: $track-color;
+}
+
+@mixin thumb() {
+  @include transitionDecelerate();
+  appearance: none;
+  height: $thumb-height;
+  width: $thumb-width;
+  border: none;
+  border-radius: $thumb-radius;
+  background: $thumb-color;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+.#{$prefix}-input-range {
+  @include transitionDecelerate();
+  opacity: 1;
+  appearance: none;
+  margin: $thumb-height / 2 0;
+  width: $track-width;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.#{$prefix}-input-range::range-track {
+  @include track();
+}
+
+.#{$prefix}-input-range::range-thumb {
+  @include thumb();
+}
+
+.#{$prefix}-input-range:focus::range-thumb {
+  background: $active-color;
+}
+
+.#{$prefix}-input-range::fill-lower {
+  background: $active-color;
+}
+
+.#{$prefix}-input-range::fill-upper {
+  background: $track-color;
+}
+
+.#{$prefix}--focus {
+  input[type=text],
+  .#{$prefix}-text-input {
+    font-weight: $fontWeightBold;
+  }
+}

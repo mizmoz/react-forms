@@ -1,0 +1,33 @@
+
+@import "variables";
+
+html,
+body {
+  @include baseStyle();
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#{$prefix} {
+  width: 100%;
+}
+
+// form styles
+@import './form';
+@import './group';
+@import './control';
+@import './transition';
+
+// Import element styles
+@import './element/color-picker';
+@import './element/input-range';
+@import './element/number-with-unit';
+@import './element/select';
+@import './element/slider-with-text';
+@import './element/text';
+
+// element helpers
+@import './element/underline';
+@import './element/tooltip';

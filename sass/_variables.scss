@@ -1,0 +1,78 @@
+
+$prefix: 'react-forms';
+
+$baseFontFamily: "Source Sans Pro";
+$baseFontSize: 15px;
+$baseFontWeight: 300;
+$baseFontColor: #525252;
+
+$baseFontColorLight: lighten($baseFontColor, 25%);
+
+$fontSizeMinute: 0.75rem;
+$fontSizeTiny: 0.85rem;
+$fontSizeSmall: 0.95rem;
+$fontSizeParagraph: 1rem;
+$fontSizeMedium: 1.2rem;
+$fontSizeLarge: 1.5rem;
+$fontSizeHuge: 2rem;
+$fontSizeMassive: 3rem;
+$fontSizeGigantic: 4rem;
+
+$fontWeightLight: 200;
+$fontWeightBold: 400;
+
+$space: 1.5rem;
+
+$padding: $space;
+$paddingHalf: $padding / 2;
+$paddingSmall: $padding / 3;
+$paddingTiny: $padding / 4;
+
+$margin: $space;
+$marginTiny: $space / 4;
+$marginSmall: $space / 3;
+$marginHalf: $space / 2;
+$marginDouble: $space * 2;
+
+$radius: 0.2rem;
+
+$inputHeight: 2rem;
+$borderColor: #dadadc;
+
+$red: #f46357;
+$blue: #32bcde;
+$green: #78cd51;
+$grey: #bec3c7;
+
+$primary: $green;
+$secondary: $blue;
+$tertiary: $grey;
+$quaternary: $red;
+
+$inputMaxWidth: 20rem;
+
+@mixin baseStyle () {
+  font-family: $baseFontFamily;
+  font-size: $baseFontSize;
+  font-weight: $baseFontWeight;
+  line-height: $baseFontSize;
+}
+
+@mixin baseInputStyle () {
+  @include baseStyle();
+  outline: none;
+  appearance: none;
+  text-indent: 0;
+}
+
+@mixin simpleTransition ($speed: 0.3s, $what: all, $type: ease-in-out) {
+  transition: $speed $what $type;
+};
+
+@mixin transitionDecelerate ($speed: 0.15s, $what: all) {
+  transition: $speed $what cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+@mixin transitionAccelerate ($speed: 0.15s, $what: all) {
+  transition: $speed $what cubic-bezier(0.4, 0.0, 1, 1);
+}
