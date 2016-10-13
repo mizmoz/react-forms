@@ -1,0 +1,6 @@
+
+@import "../variables";
+
+@mixin focused () {
+  font-weight: $fontWeightBold;
+};

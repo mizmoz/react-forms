@@ -1,0 +1,29 @@
+
+@import "helpers";
+
+.#{$prefix}-text-input {
+  @include baseInputStyle();
+  outline: none;
+  border: none;
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  padding: $paddingTiny 0;
+}
+
+.#{$prefix}-text {
+  width: 100%;
+  display: block;
+  position: relative;
+
+  input[type=text] {
+    @extend .#{$prefix}-text-input;
+  }
+}
+
+.#{$prefix}--focus {
+  input[type=text],
+  .#{$prefix}-text-input {
+    font-weight: $fontWeightBold;
+  }
+}

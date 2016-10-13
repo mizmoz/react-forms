@@ -1,0 +1,46 @@
+
+@import "variables";
+
+.#{$prefix}-control {
+  @include transitionDecelerate();
+  position: relative;
+  padding-bottom: $paddingHalf;
+  padding-top: $paddingHalf;
+
+  > label {
+    @include transitionDecelerate();
+    position: absolute;
+    top: 0;
+    font-size: $fontSizeSmall;
+    font-weight: $fontWeightBold;
+    color: $baseFontColorLight;
+  }
+}
+
+.#{$prefix}-control--empty {
+  padding-top: 0;
+
+  > label {
+    top: $paddingSmall;
+    color: $baseFontColor;
+    font-weight: $baseFontWeight;
+    font-size: $baseFontSize;
+  }
+}
+
+.#{$prefix}-control--compact {
+  display: flex;
+  padding-bottom: $paddingTiny;
+  padding-top: $paddingTiny;
+
+  > label {
+    position: relative;
+    line-height: $space;
+    align-self: center;
+  }
+
+  > div {
+    margin-left: auto;
+    align-self: center;
+  }
+}
