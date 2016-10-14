@@ -1,13 +1,16 @@
 {
   "name": "@mizmoz/react-forms",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React forms handler",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "npm run lib",
+    "clean": "rm -rf lib && mkdir lib",
+    "lib": "npm run clean && cp -a src/. lib && babel lib -d lib"
   },
   "repository": {
     "type": "git",

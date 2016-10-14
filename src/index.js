@@ -1,8 +1,10 @@
 
-"use strict";
+import Control from './Control';
+import Form from './Form';
+import Group from './Group';
 
-function sum (a, b) {
-    return a + b + a;
-}
-
-module.exports = sum;
+module.exports = {
+  Control,
+  Form,
+  Group,
+};
