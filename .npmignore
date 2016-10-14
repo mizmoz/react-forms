@@ -1,4 +1,6 @@
 src
+sass
 __tests__
 .storybook
 .eslintrc
+webpack.config.js

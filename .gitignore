@@ -1,6 +1,7 @@
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 lib/
+assets/
 
 # Dependency directories
 node_modules
