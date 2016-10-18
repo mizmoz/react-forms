@@ -10,7 +10,7 @@ const WrapperColorPicker = elementWrapper(ColorPicker);
 
 storiesOf('Component.ColorPicker', module).add('Basic', () => (
   <WrapperColorPicker
-    value="#01a8fc"
+    value=""
     onChange={action('onChange')}
   />
 ));

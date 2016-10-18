@@ -26,8 +26,8 @@ export default class Text extends Base {
    * Make sure we remove the element if one was created
    */
   componentWillUnmount = () => {
-    if (this.inputWidthElement) {
-      document.removeChild(this.inputWidthElement);
+    if (this.inputWidthElement && this.inputWidthElement.parentNode) {
+      this.inputWidthElement.parentNode.removeChild(this.inputWidthElement);
     }
   };
 

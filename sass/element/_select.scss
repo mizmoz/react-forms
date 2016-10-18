@@ -4,6 +4,8 @@
 
 .#{$prefix}-select {
   position: relative;
+  max-width: 60%;
+  width: 100%;
 }
 
 .#{$prefix}-select-container {

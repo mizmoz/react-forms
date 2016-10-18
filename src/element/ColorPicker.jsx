@@ -69,12 +69,16 @@ export default class ColorPicker extends Base {
   }
 
   /**
-   * Get the colour from the value. Sometimes the value can be a colour pallete swatch name
+   * Get the colour from the value. Sometimes the value can be a colour palette swatch name
    *
    * @param value
    * @returns {*}
    */
   getColor(value) {
+    if (!value) {
+      return '#ffffff';
+    }
+
     if (value.search(/^#[a-f0-9]{3,6}$/i) === 0) {
       // value is a colour
       return value;
