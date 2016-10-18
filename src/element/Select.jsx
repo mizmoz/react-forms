@@ -1,6 +1,7 @@
 
 import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import ArrowDropDown from '@ianchadwick/react-material-design-icons/icons/ArrowDropDown';
 import Base from './Base';
 
 /**
@@ -68,10 +69,11 @@ export default class Select extends Base {
             onBlur={this.onBlur}
             tabIndex={this.props.tabIndex}
           >
-            {this.props.allowEmpty ? <option key="__empty-val" value=""></option> : null}
-            {this.props.options.map((label, value) => <option key={value} value={value}>{label}</option>)}
+            {this.props.allowEmpty ? <option key="__empty-val" value="" /> : null}
+            {this.props.options.valueSeq().map((label, value) =>
+              <option key={value} value={value}>{label}</option>)}
           </select>
-          <i className="material-icons">arrow_drop_down</i>
+          <ArrowDropDown height="24px" width="24px" />
         </div>
         <div className="react-forms-underline" />
         <div className="react-forms-underline-active" />

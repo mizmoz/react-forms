@@ -87,12 +87,12 @@ Body.propTypes = {
   /**
    * RGB colour passed by the colorWrap HOC
    */
-  rgb: PropTypes.string,
+  rgb: PropTypes.object,
 
   /**
    * Pass extra fields in using the children
    */
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export default colorWrap(Body);

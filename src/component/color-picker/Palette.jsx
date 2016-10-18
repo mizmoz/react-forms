@@ -40,6 +40,7 @@ export default class Palette extends Component {
 
     const button = (
       <button
+        key={key}
         className="react-forms-color-picker-swatch"
         onClick={this.onClick}
         value={value}

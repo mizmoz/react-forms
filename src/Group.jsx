@@ -30,7 +30,7 @@ Group.propTypes = {
   /**
    * Group form inputs
    */
-  children: PropTypes.elements,
+  children: PropTypes.node,
 };
 
 export default Group;

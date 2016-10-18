@@ -26,7 +26,7 @@
     padding-right: $padding;
   }
 
-  .material-icons {
+  > svg {
     @include simpleTransition();
     right: 0;
     top: $paddingTiny;
