@@ -70,7 +70,7 @@ export default class Select extends Base {
             tabIndex={this.props.tabIndex}
           >
             {this.props.allowEmpty ? <option key="__empty-val" value="" /> : null}
-            {this.props.options.valueSeq().map((label, value) =>
+            {this.props.options.toSeq().map((label, value) =>
               <option key={value} value={value}>{label}</option>)}
           </select>
           <ArrowDropDown height="24px" width="24px" />

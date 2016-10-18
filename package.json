@@ -1,6 +1,6 @@
 {
   "name": "@ianchadwick/react-forms",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "React forms handler",
   "main": "lib/index.js",
   "scripts": {
