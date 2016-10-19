@@ -40,6 +40,29 @@ export default class Select extends Base {
   };
 
   /**
+   * Render the options
+   *
+   * @returns {Array}
+   */
+  renderOptions = () => {
+    const options = [];
+
+    if (this.props.allowEmpty) {
+      options.push(
+        <option key="__empty-val" value="" />
+      );
+    }
+
+    this.props.options.forEach((label, value) => {
+      options.push(
+        <option key={value} value={value}>{label}</option>
+      );
+    });
+
+    return options;
+  };
+
+  /**
    * Render the Select
    *
    * @returns {XML}
@@ -69,11 +92,9 @@ export default class Select extends Base {
             onBlur={this.onBlur}
             tabIndex={this.props.tabIndex}
           >
-            {this.props.allowEmpty ? <option key="__empty-val" value="" /> : null}
-            {this.props.options.toSeq().map((label, value) =>
-              <option key={value} value={value}>{label}</option>)}
+            {this.renderOptions()}
           </select>
-          <ArrowDropDown height="24px" width="24px" />
+          <ArrowDropDown size={24} />
         </div>
         <div className="react-forms-underline" />
         <div className="react-forms-underline-active" />

@@ -34,7 +34,7 @@
     top: $paddingTiny;
     position: absolute;
     z-index: 0;
-    color: $baseFontColorLight;
+    fill: $baseFontColorLight;
   }
 }
 
@@ -44,8 +44,8 @@
       @include focused();
     }
 
-    .material-icons {
-      color: $baseFontColor;
+    > svg {
+      fill: $baseFontColor;
     }
   }
 }
