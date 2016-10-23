@@ -6,6 +6,7 @@ import Form from '../Form';
 import Group from '../Group';
 import Control from '../Control';
 import ColorPicker from '../element/ColorPicker';
+import ColorPalette from '../element/ColorPalette';
 import Text from '../element/Text';
 import SliderWithText from '../element/SliderWithText';
 import Select from '../element/Select';
@@ -18,6 +19,7 @@ const values = map({
   sex: '',
   background: '#01a8fc',
   foreground: '#fefefe',
+  palette: 'primary',
   address: 'Kent, UK',
   padding: '10px',
   columnSpacing: 'none',
@@ -146,6 +148,7 @@ storiesOf('Form', module).add('Simple form', () => (
                 ])}
               />
             </Control>
+
           </Group>
         </div>
       )}
@@ -324,6 +327,41 @@ storiesOf('Form', module).add('Simple compact form', () => (
                 ])}
               />
             </Control>
+
+            <Control
+              compact
+              label="Palette"
+            >
+              <ColorPalette
+                name="palette"
+                value={form.values.get('palette')}
+                onChange={form.onChange}
+                position="top"
+                palette={Immutable.fromJS([
+                  {
+                    name: 'Primary',
+                    value: 'primary',
+                    color: ['#ffffff', '#f44336'],
+                  },
+                  {
+                    name: 'Secondary',
+                    value: 'secondary',
+                    color: ['#9c27b0', '#673ab7'],
+                  },
+                  {
+                    name: 'Tertiary',
+                    value: 'tertiary',
+                    color: ['#3f51b5', '#2196f3'],
+                  },
+                  {
+                    name: 'Quaternary',
+                    value: 'quaternary',
+                    color: ['#03a9f4', '#00bcd4'],
+                  },
+                ])}
+              />
+            </Control>
+
           </Group>
         </div>
       )}

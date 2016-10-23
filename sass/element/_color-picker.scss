@@ -48,7 +48,7 @@ $modulePrefix: #{$prefix}-color-picker;
   background-color: white;
   box-shadow: 0px 0 10px rgba(0, 0, 0, 0.2);
   border-radius: $radius;
-  width: 15rem;
+  width: 16.275rem;
 }
 
 .#{$modulePrefix}-component-input {
@@ -109,17 +109,17 @@ $modulePrefix: #{$prefix}-color-picker;
 
 .#{$modulePrefix}-component-palette {
   border-top: 1px solid $borderColor;
-  padding: $paddingHalf;
 
   > header {
     display: flex;
+    padding: $paddingHalf $paddingHalf 0;
 
     h5 {
       font-weight: $fontWeightBold;
       font-size: $fontSizeTiny;
       color: $baseFontColorLight;
       margin: 0;
-      padding: 0 0 $paddingHalf 0;
+      padding: 0;
     }
 
     i {
@@ -130,8 +130,14 @@ $modulePrefix: #{$prefix}-color-picker;
   }
 
   > section {
-    display: flex;
-    justify-content: space-between;
+    padding: $paddingTiny + ($paddingTiny / 2);
+
+    > div {
+      display: inline-block;
+      width: $margin;
+      margin: ($paddingTiny / 2);
+      font-size: 0;
+    }
 
     .#{$modulePrefix}-swatch {
       background-color: white;

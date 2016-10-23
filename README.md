@@ -6,3 +6,13 @@ pain of large, frequent changes to the API.
 
 // Look at this implementation for the form handling
 http://redux-form.com/6.1.0/examples/syncValidation/
+
+
+### ColorPicker
+```js
+<ColorPicker
+    value="#ffeeee"
+    onChange={this.onChange}
+    disableAlpha
+/>
+```

@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import Body from './Body';
 import Palette from './Palette';
+import getColor from './getColor';
 
 /**
  * Responsibilities:
@@ -14,7 +15,7 @@ export default class ColorPicker extends Component {
     super(props, context);
 
     this.state = {
-      color: this.getColor(props.value),
+      color: getColor(props.value, props.palette),
     };
   }
 
@@ -24,7 +25,7 @@ export default class ColorPicker extends Component {
    * @param nextProps
    */
   componentWillReceiveProps(nextProps) {
-    const color = this.getColor(nextProps.value);
+    const color = getColor(nextProps.value, nextProps.palette);
 
     if (color !== this.state.color) {
       this.setState({
@@ -44,27 +45,6 @@ export default class ColorPicker extends Component {
     const value = (typeof color === 'string' ? color : color.hex);
     this.props.onChange(value);
   };
-
-  /**
-   * Get the colour from the value. Sometimes the value can be a colour palette swatch name
-   *
-   * @param value
-   * @returns {*}
-   */
-  getColor(value) {
-    if (!value) {
-      return '#ffffff';
-    }
-
-    if (value.search(/^#[a-f0-9]{3,6}$/i) === 0) {
-      // value is a colour
-      return value;
-    }
-
-    // lookup the value in the palette if one is provided
-    return this.props.palette.findEntry(s => s.get('value') === value)[1]
-      .get('color');
-  }
 
   /**
    * Render the picker

@@ -4,19 +4,9 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { List as list, Map as map } from 'immutable';
 import tinycolor from 'tinycolor2';
 import Tooltip from '../Tooltip';
+import Swatch from './Swatch';
 
 export default class Palette extends Component {
-  /**
-   * Handle the swatch clicks
-   *
-   * @param event
-   */
-  onClick = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    this.props.onChange(event.currentTarget.value);
-  };
-
   /**
    * Render the color
    *
@@ -28,24 +18,17 @@ export default class Palette extends Component {
     const color = (typeof swatch === 'string' ? swatch : swatch.get('color'));
     const value = (typeof swatch === 'string' ? swatch : swatch.get('value'));
     const tooltip = (typeof swatch === 'string' ? '' : swatch.get('name'));
-    const shadowSize = (this.props.hex === color ? '.2rem' : '1.1rem');
-
-    const brightness = tinycolor(color).getBrightness();
-    const borderColor = (brightness > 200 ? '#dadadc' : 'transparent');
-
-    const style = {
-      boxShadow: `${color} 0px 0px 0px ${shadowSize} inset`,
-      border: `1px solid ${borderColor}`,
-    };
+    const active = (this.props.hex === color || this.props.value === value);
 
     const button = (
-      <button
-        key={key}
-        className="react-forms-color-picker-swatch"
-        onClick={this.onClick}
-        value={value}
-        style={style}
-      />
+      <div>
+        <Swatch
+          onClick={this.props.onChange}
+          color={color}
+          value={value}
+          active={active}
+        />
+      </div>
     );
 
     return (tooltip ? <Tooltip key={value} text={tooltip}>{button}</Tooltip> : button);
@@ -88,7 +71,7 @@ Palette.propTypes = {
   /**
    * On change handler
    */
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 
   /**
    * Colour palette title
@@ -111,7 +94,11 @@ Palette.propTypes = {
       ImmutablePropTypes.contains({
         name: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        color: PropTypes.string.isRequired,
+        color: PropTypes.oneOfType([
+          ImmutablePropTypes.list,
+          PropTypes.string,
+          PropTypes.array,
+        ]).isRequired,
       })
     ),
   ]),

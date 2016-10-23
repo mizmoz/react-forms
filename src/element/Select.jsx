@@ -94,7 +94,7 @@ export default class Select extends Base {
           >
             {this.renderOptions()}
           </select>
-          <ArrowDropDown size={24} />
+          <ArrowDropDown />
         </div>
         <div className="react-forms-underline" />
         <div className="react-forms-underline-active" />

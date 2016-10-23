@@ -7,6 +7,7 @@ import KeyboardEvents from '../helper/KeyboardEvents';
 import Base from './Base';
 import ColorPickerComponent from '../component/color-picker/ColorPicker';
 import Buttons from '../component/color-picker/Buttons';
+import getColor from '../component/color-picker/getColor';
 
 /**
  * Responsibilities:
@@ -25,7 +26,7 @@ export default class ColorPicker extends Base {
       focus: false,
       show: false,
       initialColor: '',
-      color: this.getColor(props.value),
+      color: getColor(props.value, props.palette),
     };
 
     /**
@@ -59,34 +60,13 @@ export default class ColorPicker extends Base {
    * @param nextProps
    */
   componentWillReceiveProps(nextProps) {
-    const color = this.getColor(nextProps.value);
+    const color = getColor(nextProps.value, nextProps.palette);
 
     if (color !== this.state.color) {
       this.setState({
         color,
       });
     }
-  }
-
-  /**
-   * Get the colour from the value. Sometimes the value can be a colour palette swatch name
-   *
-   * @param value
-   * @returns {*}
-   */
-  getColor(value) {
-    if (!value) {
-      return '#ffffff';
-    }
-
-    if (value.search(/^#[a-f0-9]{3,6}$/i) === 0) {
-      // value is a colour
-      return value;
-    }
-
-    // lookup the value in the palette if one is provided
-    return this.props.palette.findEntry(s => s.get('value') === value)[1]
-      .get('color');
   }
 
   /**
@@ -221,6 +201,7 @@ export default class ColorPicker extends Base {
       onChange: this.onChange,
       palette: this.props.palette,
       value: this.props.value,
+      disableAlpha: this.props.disableAlpha,
     };
 
     return (
@@ -288,6 +269,11 @@ export default class ColorPicker extends Base {
 
 ColorPicker.propTypes = {
   /**
+   * Disable the alpha select
+   */
+  disableAlpha: PropTypes.bool,
+
+  /**
    * Element blurred
    */
   onBlur: PropTypes.func,
@@ -317,6 +303,11 @@ ColorPicker.propTypes = {
 };
 
 ColorPicker.defaultProps = {
+  /**
+   * Show alpha by default
+   */
+  disableAlpha: false,
+
   /**
    * Called when the element blurs
    */

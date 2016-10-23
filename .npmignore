@@ -3,4 +3,6 @@ sass
 __tests__
 .storybook
 .eslintrc
+.babelrc
+.npmignore
 webpack.config.js

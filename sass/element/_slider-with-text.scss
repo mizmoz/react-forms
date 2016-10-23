@@ -16,3 +16,9 @@
     opacity: 0;
   }
 }
+
+.#{$prefix}-control--compact {
+  .#{$prefix}-slider-with-text {
+    max-width: 60%;
+  }
+}
