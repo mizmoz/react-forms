@@ -15,6 +15,7 @@
   width: 100%;
   display: block;
   position: relative;
+  padding-top: 1rem;
 
   input[type=text] {
     @extend .#{$prefix}-text-input;
@@ -25,5 +26,11 @@
   input[type=text],
   .#{$prefix}-text-input {
     font-weight: $fontWeightBold;
+  }
+}
+
+.#{$prefix}-control--empty {
+  .#{$prefix}-text {
+    padding-top: 0;
   }
 }

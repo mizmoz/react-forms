@@ -58,6 +58,7 @@ storiesOf('Element.Select', module).add('Basic with lots of items', () => {
       placeholder="Select your year of birth"
       onChange={action('onChange')}
       options={orderedMap(years)}
+      valueIsNumber
     />
   );
 });

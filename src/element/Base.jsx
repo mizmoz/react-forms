@@ -43,7 +43,10 @@ export default class Base extends Component {
    */
   onChange = (event) => {
     event.preventDefault();
-    this.props.onChange(this.props.name, event.target.value);
+
+    // get the value and check if we need to cast it to a number
+    const value = (this.props.valueIsNumber ? Number(event.target.value) : event.target.value);
+    this.props.onChange(this.props.name, value);
   };
 
   /**
@@ -118,6 +121,11 @@ Base.propTypes = {
    * Is this element required?
    */
   isRequired: PropTypes.bool,
+
+  /**
+   * Value should be converted to a number before passing to the onChange callback
+   */
+  valueIsNumber: PropTypes.bool,
 };
 
 Base.defaultProps = {

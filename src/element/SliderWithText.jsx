@@ -76,7 +76,7 @@ export default class SliderWithText extends Base {
    *
    * @param event
    */
-  onFocus = (event) => {
+  onFocus = () => {
     this.setState({
       focus: true,
       initialUnit: this.state.unit,
@@ -87,7 +87,7 @@ export default class SliderWithText extends Base {
    * Un-focus
    *
    */
-  onBlur = (event) => {
+  onBlur = () => {
     this.setState({
       focus: false,
     });
@@ -148,11 +148,15 @@ export default class SliderWithText extends Base {
    * @param unit
    */
   changeProps = (number, unit) => {
+    if (this.props.valueIsNumber) {
+      // only return the number
+      return this.props.onChange(this.props.name, number);
+    }
+
     // check this is a valid unit, reset to the initial unit if not
     const newUnit = (this.props.units.length && this.props.units.indexOf(unit) === -1
-      ? this.state.initialUnit : unit);
-
-    this.props.onChange(this.props.name, `${number}${newUnit}`);
+      ? this.state.unit : unit);
+    return this.props.onChange(this.props.name, `${number}${newUnit}`);
   };
 
   /**

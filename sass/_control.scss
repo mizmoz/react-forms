@@ -4,8 +4,8 @@
 .#{$prefix}-control {
   @include transitionDecelerate();
   position: relative;
-  padding-bottom: $paddingHalf;
-  padding-top: $paddingHalf;
+  padding-bottom: $paddingTiny;
+  padding-top: $paddingTiny;
 
   > label {
     @include transitionDecelerate();
@@ -23,16 +23,13 @@
 
   > label {
     top: $paddingSmall;
-    color: $baseFontColor;
-    font-weight: $baseFontWeight;
     font-size: $baseFontSize;
   }
 }
 
 .#{$prefix}-control--compact {
   display: flex;
-  padding-bottom: $paddingTiny;
-  padding-top: $paddingTiny;
+  height: 3rem;
 
   > label {
     position: relative;

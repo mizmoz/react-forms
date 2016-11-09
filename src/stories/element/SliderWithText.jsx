@@ -14,6 +14,18 @@ storiesOf('Element.SliderWithText', module).add('Basic with percent', () => (
   />
 ));
 
+storiesOf('Element.SliderWithText', module).add('Basic with number', () => (
+  <WrapperSliderWithText
+    compact
+    min={0}
+    max={25}
+    value={15}
+    name="value"
+    onChange={action('onChange')}
+    valueIsNumber
+  />
+));
+
 storiesOf('Element.SliderWithText', module).add('With min, max and step', () => (
   <WrapperSliderWithText
     min={50}

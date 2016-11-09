@@ -9,6 +9,10 @@
   input[type=range] {
     margin-right: $paddingHalf;
   }
+
+  .#{$prefix}-text {
+    padding-top: 0;
+  }
 }
 
 .#{$prefix}-slider-with-text:not(:hover) {

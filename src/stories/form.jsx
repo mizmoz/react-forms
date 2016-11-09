@@ -281,6 +281,18 @@ storiesOf('Form', module).add('Simple compact form', () => (
             </Control>
 
             <Control
+              label="Name"
+              isEmpty={Text.isEmpty(form.values.get('name'))}
+            >
+              <Text
+                compact
+                name="name"
+                value={form.values.get('name')}
+                onChange={form.onChange}
+              />
+            </Control>
+
+            <Control
               compact
               label="Padding"
               isEmpty={Text.isEmpty(form.values.get('padding'))}
