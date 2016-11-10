@@ -10,6 +10,7 @@ import ColorPalette from '../element/ColorPalette';
 import Text from '../element/Text';
 import SliderWithText from '../element/SliderWithText';
 import Select from '../element/Select';
+import Switch from '../element/Switch';
 
 require('!style!css!postcss!sass!../../sass/style.scss');
 
@@ -24,6 +25,7 @@ const values = map({
   padding: '10px',
   columnSpacing: 'none',
   width: 'fixed',
+  visible: true,
 });
 
 storiesOf('Form', module).add('Simple form', () => (
@@ -337,6 +339,17 @@ storiesOf('Form', module).add('Simple compact form', () => (
                   ['fixed', 'Fixed'],
                   ['full', 'Full (100%)'],
                 ])}
+              />
+            </Control>
+
+            <Control
+              compact
+              label="Visible"
+            >
+              <Switch
+                name="visible"
+                value={form.values.get('visible')}
+                onChange={form.onChange}
               />
             </Control>
 

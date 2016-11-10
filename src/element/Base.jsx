@@ -16,6 +16,16 @@ export default class Base extends Component {
   }
 
   /**
+   * Get the boolean value
+   *
+   * @param value
+   * @returns {boolean}
+   */
+  static getBooleanValue(value) {
+    return (['false', '0', 0, false, 'off', ''].indexOf(value) === -1);
+  }
+
+  /**
    * Events to add when the component mounts
    *
    * @type {Array}
@@ -43,10 +53,18 @@ export default class Base extends Component {
    */
   onChange = (event) => {
     event.preventDefault();
+    this.fireOnChange(event.target.value);
+  };
 
+  /**
+   * Fire the onChange event
+   *
+   * @param value
+   */
+  fireOnChange = (value) => {
     // get the value and check if we need to cast it to a number
-    const value = (this.props.valueIsNumber ? Number(event.target.value) : event.target.value);
-    this.props.onChange(this.props.name, value);
+    const newValue = (this.props.valueIsNumber ? Number(value) : value);
+    this.props.onChange(this.props.name, newValue);
   };
 
   /**

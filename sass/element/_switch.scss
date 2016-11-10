@@ -1,0 +1,53 @@
+
+@import "../variables";
+
+$offColor: $grey;
+$onColor: $blue;
+$lighten: 20%;
+
+$containerWidth: 35px;
+$containerHeight: 12px;
+$handleHeight: 20px;
+$switchPadding: ($handleHeight - $containerHeight) / 2;
+
+.#{$prefix}-switch {
+  position: relative;
+  width: $containerWidth;
+  height: $handleHeight;
+  padding: $switchPadding 0;
+  cursor: pointer;
+}
+
+.#{$prefix}-switch-container {
+  @include transitionDecelerate();
+  width: 100%;
+  height: $containerHeight;
+  border-radius: $paddingHalf;
+  background-color: $borderColor;
+}
+
+.#{$prefix}-switch-handle {
+  @include transitionDecelerate();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
+  width: $handleHeight;
+  height: $handleHeight;
+  border-radius: $handleHeight;
+  background-color: lighten($grey, $lighten);
+  border: 1px solid $borderColor;
+}
+
+.#{$prefix}-switch--checked {
+  .#{$prefix}-switch-container {
+    background-color: lighten($blue, $lighten);
+  }
+
+  .#{$prefix}-switch-handle {
+    background-color: $blue;
+    border: 1px solid darken($blue, 5%);
+    right: 0;
+    left: auto;
+  }
+}

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Immutable, { List as list } from 'immutable';
+import { fromJS } from 'immutable';
 import { storiesOf, action } from '@kadira/storybook';
 import elementWrapper from '../ElementWrapper';
 import ColorPalette from '../../element/ColorPalette';
@@ -12,7 +12,7 @@ storiesOf('Element.ColorPalette', module).add('With key => value palette', () =>
     name="value"
     value="secondary"
     onChange={action('onChange')}
-    palette={Immutable.fromJS([
+    palette={fromJS([
       {
         name: 'Primary',
         value: 'primary',

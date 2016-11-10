@@ -2,6 +2,7 @@
 require('./form');
 require('./element/Text');
 require('./element/Select');
+require('./element/Switch');
 require('./element/SliderWithText');
 require('./element/NumberWithUnit');
 require('./element/ColorPalette');
