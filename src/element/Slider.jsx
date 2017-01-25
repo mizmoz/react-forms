@@ -28,7 +28,7 @@ export default class Slider extends Base {
   }
 }
 
-Text.propTypes = {
+Slider.propTypes = {
   /**
    * Input placeholder
    */
