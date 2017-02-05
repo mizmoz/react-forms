@@ -77,8 +77,8 @@ storiesOf('Form', module).add('Simple form', () => (
                 onChange={form.onChange}
                 allowEmpty
                 options={orderedMap([
-                  ['female', 'Female'],
-                  ['male', 'Male'],
+                  ['Female', 'female'],
+                  ['Male', 'male'],
                 ])}
               />
             </Control>

@@ -2,6 +2,7 @@
 @import "../variables";
 
 $modulePrefix: #{$prefix}-color-picker;
+$swatchSize: floor($spaceRatio * $baseFontSize);
 
 .#{$modulePrefix} {
   position: relative;
@@ -35,8 +36,8 @@ $modulePrefix: #{$prefix}-color-picker;
   border: 1px solid transparent;
   cursor: pointer;
 
-  height: $space;
-  width: $space;
+  height: $swatchSize;
+  width: $swatchSize;
 
   &:hover {
     transform: scale(1.25, 1.25);
@@ -91,8 +92,8 @@ $modulePrefix: #{$prefix}-color-picker;
 
 .#{$modulePrefix}-component-pointer,
 .#{$modulePrefix}-component-pointer-circle {
-  height: $paddingHalf + .1;
-  width: $paddingHalf + .1;
+  height: $swatchSize + 1;
+  width: $swatchSize + 1;
   border-radius: 50%;
 }
 

@@ -44,22 +44,36 @@ export default class Select extends Base {
    *
    * @returns {Array}
    */
-  renderOptions = () => {
-    const options = [];
+  renderOptions = (options, allowEmpty = false) => {
+    const elements = [];
 
-    if (this.props.allowEmpty) {
-      options.push(
+    if (allowEmpty) {
+      elements.push(
         <option key="__empty-val" value="" />
       );
     }
 
-    this.props.options.forEach((label, value) => {
-      options.push(
-        <option key={value} value={value}>{label}</option>
-      );
+    options.forEach((value, label) => {
+      if (typeof value === 'object') {
+        elements.push(
+          <optgroup key={label} label={label}>
+            {this.renderOptions(value)}
+          </optgroup>
+        );
+      } else {
+        const elemProps = {
+          key: value || label,
+          value: value || label,
+          children: label,
+        };
+
+        elements.push(
+          <option {...elemProps} />
+        );
+      }
     });
 
-    return options;
+    return elements;
   };
 
   /**
@@ -92,7 +106,7 @@ export default class Select extends Base {
             onBlur={this.onBlur}
             tabIndex={this.props.tabIndex}
           >
-            {this.renderOptions()}
+            {this.renderOptions(this.props.options, this.props.allowEmpty)}
           </select>
           <ArrowDropDown />
         </div>

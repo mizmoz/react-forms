@@ -5,6 +5,7 @@ import NumberWithUnit from './NumberWithUnit';
 import Select from './Select';
 import Slider from './Slider';
 import SliderWithText from './SliderWithText';
+import Switch from './Switch';
 import Text from './Text';
 
 module.exports = {
@@ -14,5 +15,6 @@ module.exports = {
   Select,
   Slider,
   SliderWithText,
+  Switch,
   Text,
 };

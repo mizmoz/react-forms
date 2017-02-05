@@ -1,8 +1,12 @@
 
 import React, { PropTypes } from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { OrderedMap as orderedMap } from 'immutable';
+import { OrderedMap as orderedMap, List as list } from 'immutable';
 import Select from '../../element/Select';
+
+import elementWrapper from '../ElementWrapper';
+
+const WrappedSelect = elementWrapper(Select);
 
 const FontComponent = props => (
   <button
@@ -26,30 +30,30 @@ storiesOf('Element.Select', module).add('Basic', () => (
     placeholder="Select your sex"
     onChange={action('onChange')}
     options={orderedMap([
-      ['female', 'Female'],
-      ['male', 'Male'],
+      ['Female', 'female'],
+      ['Male', 'male'],
     ])}
   />
 ));
 
-storiesOf('Element.Select', module).add('Basic with value', () => (
+storiesOf('Element.Select', module).add('Basic with default value', () => (
   <Select
     name="sex"
     value="male"
     placeholder="Select your sex"
     onChange={action('onChange')}
     options={orderedMap([
-      ['female', 'Female'],
-      ['male', 'Male'],
+      ['Female', 'female'],
+      ['Male', 'male'],
     ])}
   />
 ));
 
-storiesOf('Element.Select', module).add('Basic with lots of items', () => {
+storiesOf('Element.Select', module).add('Basic with lots of values only', () => {
   const years = [];
 
   for (let i = 1900; i < 2016; i += 1) {
-    years.push([i, i]);
+    years.push([i]);
   }
 
   return (
@@ -63,18 +67,43 @@ storiesOf('Element.Select', module).add('Basic with lots of items', () => {
   );
 });
 
+storiesOf('Element.Select', module).add('Subcategories', () => {
+  const categories = orderedMap([
+    [
+      'Dark Colours', orderedMap([
+        ['Black'],
+        ['Navy Blue'],
+      ]),
+    ],
+    [
+      'Light Colours', orderedMap([
+        ['White'],
+        ['Yellow'],
+      ]),
+    ],
+  ]);
+
+  return (
+    <WrappedSelect
+      name="colour"
+      placeholder="Select colour"
+      onChange={action('onChange')}
+      options={categories}
+    />
+  );
+});
+
 storiesOf('Element.Select', module).add('Custom option renderer', () => (
   <Select
     name="font"
-    value="Helvetica"
     placeholder="Select a font"
     onChange={action('onChange')}
     optionsComponent={FontComponent}
     options={orderedMap([
-      ['Arial', 'Arial'],
-      ['Helvetica', 'Helvetica'],
-      ['Source Sans Pro', 'Source Sans Pro'],
-      ['Verdana', 'Verdana'],
+      ['Arial'],
+      ['Helvetica'],
+      ['Source Sans Pro'],
+      ['Verdana'],
     ])}
   />
 ));

@@ -16,3 +16,36 @@ http://redux-form.com/6.1.0/examples/syncValidation/
     disableAlpha
 />
 ```
+
+### Select
+
+Select drop down
+```js
+<Select 
+  name="food"
+  onChange={onChange}
+  options={options}
+/>
+```
+
+Options 
+```js
+// Label only
+const options = OrderedMap([
+  ['Cheese'],
+]);
+
+// Label & value
+const options = OrderedMap([
+  ['Cheese', 'cheese'],
+]);
+
+// Groups
+const options = OrderedMap([
+  [
+    'Dark Colours', OrderedMap([
+      ['Black'],
+      ['Navy Blue'],
+    ]),
+  ],
+]);
