@@ -9,7 +9,10 @@ $swatchSize: floor($spaceRatio * $baseFontSize);
 }
 
 .#{$modulePrefix}-stack {
+  position: relative;
+
   .#{$modulePrefix} {
+    position: initial;
     display: inline-block;
     margin-left: $marginHalf;
   }
@@ -99,7 +102,7 @@ $swatchSize: floor($spaceRatio * $baseFontSize);
 
 .#{$modulePrefix}-component-pointer {
   background-color: white;
-  transform: translate(-6px, -1px);
+  transform: translate(-6px, -6px);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
 

@@ -1,8 +1,8 @@
 
 import React, { PropTypes } from 'react';
 
-const Control = (props) => {
-  const child = (props.children.constructor === Array ? props.children[0] : props.children);
+const Control = ({ children, compact, id, isEmpty, label }) => {
+  const child = (children.constructor === Array ? children[0] : children);
 
   const className = ['react-forms-control'];
 
@@ -10,29 +10,34 @@ const Control = (props) => {
     className.push('required');
   }
 
-  if (props.isEmpty) {
+  if (isEmpty) {
     className.push('react-forms-control--empty');
   }
 
-  if (props.compact) {
+  if (compact) {
     className.push('react-forms-control--compact');
   }
 
   return (
-    <li className={className.join(' ')}>
+    <li id={id} className={className.join(' ')}>
       <label htmlFor={child.props.name}>
-        {props.label}
+        {label}
       </label>
-      {props.children}
+      {children}
     </li>
   );
-}
+};
 
 Control.propTypes = {
   /**
    * Compact form
    */
   compact: PropTypes.bool,
+
+  /**
+   * Id for the li
+   */
+  id: PropTypes.string,
 
   /**
    * Group label

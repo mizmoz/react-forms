@@ -3,8 +3,6 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const inputrange = require('postcss-input-range');
 
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
 module.exports = (storybookBaseConfig, configType) => {
   // Make whatever fine-grained changes you need
   storybookBaseConfig.module.loaders.push({

@@ -106,17 +106,19 @@ export default class ColorPalette extends Base {
    * @returns {XML}
    */
   renderColorPalette() {
+    const { show } = this.state;
+    const { palette, position, value } = this.props;
     const className = ['react-forms-color-picker-popover'];
 
-    if (this.props.position === 'top') {
+    if (position === 'top') {
       className.push('react-forms-color-picker-popover--top');
     }
 
     // create the props
     const props = {
       onChange: this.onChange,
-      palette: this.props.palette,
-      value: this.props.value,
+      palette: palette,
+      value: value,
     };
 
     return (
@@ -126,7 +128,7 @@ export default class ColorPalette extends Base {
         transitionLeaveTimeout={300}
         className={className.join(' ')}
       >
-        {this.state.show ? <ColorPaletteComponent {...props} /> : null}
+        {show ? <ColorPaletteComponent {...props} /> : null}
       </ReactCSSTransitionGroup>
     );
   }
@@ -137,7 +139,8 @@ export default class ColorPalette extends Base {
    * @returns {XML}
    */
   render() {
-    const color = getColor(this.props.value, this.props.palette);
+    const { palette, value } = this.props;
+    const color = getColor(value, palette);
 
     return (
       <div className="react-forms-color-picker">

@@ -2,14 +2,14 @@
 import React, { PropTypes } from 'react';
 import RcTooltip from 'rc-tooltip';
 
-const Tooltip = props => (
+const Tooltip = ({ children, enterDelay, placement, text }) => (
   <RcTooltip
-    mouseEnterDelay={props.enterDelay}
-    overlay={props.text}
-    placement={props.placement}
+    mouseEnterDelay={enterDelay}
+    overlay={text}
+    placement={placement}
     prefixCls="react-forms-tooltip"
     transitionName="react-forms-tooltip"
-  >{props.children}</RcTooltip>
+  >{children}</RcTooltip>
 );
 
 Tooltip.propTypes = {

@@ -4,33 +4,40 @@ import React, { PropTypes } from 'react';
 /**
  * Render a field set for the passed form elements
  *
- * @param props
+ * @param children
+ * @param id
+ * @param title
  * @returns {XML}
  * @constructor
  */
-const Group = (props) => {
+const Group = ({ children, id, title }) => {
   const className = ['react-forms-group'];
 
   return (
-    <fieldset className={className.join(' ')}>
-      {props.title ? <h3>{props.title}</h3> : null}
+    <fieldset id={id} className={className.join(' ')}>
+      {title ? <h3>{title}</h3> : null}
       <ul>
-        {props.children}
+        {children}
       </ul>
     </fieldset>
   );
-}
+};
 
 Group.propTypes = {
   /**
-   * Group title
+   * Id for the li
    */
-  title: PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * Group form inputs
    */
   children: PropTypes.node,
+
+  /**
+   * Group title
+   */
+  title: PropTypes.string,
 };
 
 export default Group;

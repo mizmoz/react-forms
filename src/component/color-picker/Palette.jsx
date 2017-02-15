@@ -1,8 +1,7 @@
 
 import React, { PropTypes, Component } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { List as list, Map as map } from 'immutable';
-import tinycolor from 'tinycolor2';
+import { List as list } from 'immutable';
 import Tooltip from '../Tooltip';
 import Swatch from './Swatch';
 
@@ -11,14 +10,16 @@ export default class Palette extends Component {
    * Render the color
    *
    * @param swatch
-   * @param key
    * @returns {XML}
    */
-  renderSwatch = (swatch, key) => {
+  renderSwatch = (swatch) => {
     const color = (typeof swatch === 'string' ? swatch : swatch.get('color'));
     const value = (typeof swatch === 'string' ? swatch : swatch.get('value'));
     const tooltip = (typeof swatch === 'string' ? '' : swatch.get('name'));
-    const active = (this.props.hex === color || this.props.value === value);
+
+    // match the colour if swatch is a string otherwise match the swatch name
+    const active = (typeof swatch === 'string'
+      ? this.props.hex === color : this.props.value === value);
 
     const button = (
       <div>

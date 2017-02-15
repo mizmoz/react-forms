@@ -1,6 +1,6 @@
 {
   "name": "@mizmoz/react-forms",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "React forms handler",
   "main": "lib/index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "build-css": "npm run build-sass && postcss --use postcss-input-range < assets/style.css | postcss --use autoprefixer -b 'last 2 versions' | postcss --use cssnano > assets/style.min.css",
     "prepublish": "npm run lib",
     "clean": "rm -rf lib && mkdir lib && rm -rf assets && mkdir assets",
-    "lib": "npm run clean && cp -a src/. lib && babel lib -d lib && npm run build-css && find lib/ -name \"*.jsx\" -type f -delete"
+    "lib": "npm run clean && cp -a src/. lib && babel lib -d lib && npm run build-css && find lib/ -name \"*.jsx\" -type f -delete",
+    "stats": "webpack --json > stats.json"
   },
   "repository": {
     "type": "git",

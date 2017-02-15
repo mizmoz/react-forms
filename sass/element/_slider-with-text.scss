@@ -3,8 +3,8 @@
 @import "helpers";
 
 .#{$prefix}-slider-with-text {
-  position: relative;
   display: flex;
+  width: 100%;
 
   input[type=range] {
     margin-right: $paddingHalf;
@@ -24,5 +24,13 @@
 .#{$prefix}-control--compact {
   .#{$prefix}-slider-with-text {
     max-width: 60%;
+  }
+
+  input[type=range] {
+    max-width: 70%;
+  }
+
+  .#{$prefix}-text {
+    margin-left: auto;
   }
 }

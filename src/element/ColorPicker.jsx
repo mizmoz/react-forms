@@ -1,13 +1,13 @@
 
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import shallowCompare from 'react-addons-shallow-compare';
 import tinycolor from 'tinycolor2';
 import KeyboardEvents from '../helper/KeyboardEvents';
 import Base from './Base';
 import ColorPickerComponent from '../component/color-picker/ColorPicker';
 import Buttons from '../component/color-picker/Buttons';
 import getColor from '../component/color-picker/getColor';
+import Tooltip from '../component/Tooltip';
 
 /**
  * Responsibilities:
@@ -185,6 +185,26 @@ export default class ColorPicker extends Base {
   };
 
   /**
+   * Get the tooltip
+   *
+   * @returns {string}
+   */
+  getToolTip = () => {
+    const parts = [];
+    const { title, value } = this.props;
+
+    if (title) {
+      parts.push(title);
+    }
+
+    if (value) {
+      parts.push(value);
+    }
+
+    return parts.join(' - ');
+  };
+
+  /**
    * Render the color picker
    *
    * @return {XML}
@@ -242,6 +262,7 @@ export default class ColorPicker extends Base {
       className.push('react-forms--focus');
     }
 
+    const { name } = this.props;
     const brightness = tinycolor(this.state.color).getBrightness();
     const borderColor = (brightness > 200 ? '#dadadc' : 'transparent');
 
@@ -256,12 +277,15 @@ export default class ColorPicker extends Base {
         ref={r => (this.picker = r)}
       >
         {this.renderColorPicker()}
-        <button
-          type="button"
-          className="react-forms-color-picker-swatch"
-          style={style}
-          onClick={this.onClick}
-        />
+        <Tooltip text={this.getToolTip()}>
+          <button
+            name={name}
+            type="button"
+            className="react-forms-color-picker-swatch"
+            style={style}
+            onClick={this.onClick}
+          />
+        </Tooltip>
       </div>
     );
   }
@@ -292,6 +316,16 @@ ColorPicker.propTypes = {
    * Colour palette
    */
   palette: ColorPickerComponent.propTypes.palette,
+
+  /**
+   * Element name
+   */
+  name: PropTypes.string,
+
+  /**
+   * Title for the element, this is used in the hover tooltip
+   */
+  title: PropTypes.string,
 
   /**
    * Value can either be a color string or a callback

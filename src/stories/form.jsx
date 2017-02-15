@@ -176,6 +176,7 @@ storiesOf('Form', module).add('Simple compact form', () => (
           <Group title="Profile">
             <Control
               compact
+              id="color-picker"
               label="Background"
               isEmpty={ColorPicker.isEmpty(form.values.get('background'))}
             >
@@ -183,6 +184,7 @@ storiesOf('Form', module).add('Simple compact form', () => (
 
                 <ColorPicker
                   name="foreground"
+                  title="Foreground colour"
                   value={form.values.get('foreground')}
                   onChange={form.onChange}
                   position="bottom"
