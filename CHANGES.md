@@ -1,5 +1,14 @@
 # React-forms changes
 
+## v0.5.5
+
+- Fix default value for TextArea not populating the field
+- Add onPaste handler to fire the onChange event and update the value
+
+## v0.5.4
+
+- Fix text area not firing the focus state change
+
 ## v0.5.3
 
 - Add text area like field. Actually uses content editable to easily expand to the size of the content

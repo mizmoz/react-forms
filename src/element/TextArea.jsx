@@ -74,12 +74,22 @@ export default class TextArea extends Base {
   };
 
   /**
+   * Update the editor when a paste happens
+   *
+   */
+  onPaste = () => {
+    setTimeout(() => {
+      this.fireOnChange(this.editor.innerText);
+    }, 10);
+  };
+
+  /**
    * Render the Text
    *
    * @returns {XML}
    */
   render() {
-    const { focus, value } = this.state;
+    const { focus, html } = this.state;
     const { name, tabIndex } = this.props;
 
     const className = [
@@ -89,19 +99,22 @@ export default class TextArea extends Base {
     if (focus) {
       className.push('react-forms--focus');
     }
-
+    
     return (
       <div className={className.join(' ')}>
         <pre
           contentEditable="true"
+          suppressContentEditableWarning
           type="text"
           id={name}
           name={name}
           onKeyUp={this.onKeyUp}
+          onPaste={this.onPaste}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           tabIndex={tabIndex}
-        >{value}</pre>
+          ref={(r) => { this.editor = r; }}
+        >{html}</pre>
         <div className="react-forms-underline" />
         <div className="react-forms-underline-active" />
       </div>
