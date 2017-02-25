@@ -6,15 +6,16 @@ import React, { PropTypes } from 'react';
  *
  * @param children
  * @param id
+ * @param style
  * @param title
  * @returns {XML}
  * @constructor
  */
-const Group = ({ children, id, title }) => {
+const Group = ({ children, id, style, title }) => {
   const className = ['react-forms-group'];
 
   return (
-    <fieldset id={id} className={className.join(' ')}>
+    <fieldset id={id} className={className.join(' ')} style={style}>
       {title ? <h3>{title}</h3> : null}
       <ul>
         {children}
@@ -33,6 +34,11 @@ Group.propTypes = {
    * Group form inputs
    */
   children: PropTypes.node,
+
+  /**
+   * Field set style
+   */
+  style: PropTypes.object,
 
   /**
    * Group title

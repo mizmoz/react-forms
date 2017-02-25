@@ -1,0 +1,41 @@
+
+@import "helpers";
+
+.#{$prefix}-textarea-input {
+  @include baseInputStyle();
+  outline: none;
+  border: none;
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  padding: $paddingTiny 0;
+}
+
+.#{$prefix}-textarea {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding-top: 1rem;
+
+  pre {
+    @extend .#{$prefix}-textarea-input;
+    font-family: monospace;
+    font-size: $fontSizeTiny;
+    line-height: 19px;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+}
+
+.#{$prefix}--focus {
+  pre,
+  .#{$prefix}-textarea-input {
+    font-weight: $fontWeightBold;
+  }
+}
+
+.#{$prefix}-control--empty {
+  .#{$prefix}-textarea {
+    padding-top: 0;
+  }
+}

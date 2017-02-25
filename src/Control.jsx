@@ -1,7 +1,7 @@
 
 import React, { PropTypes } from 'react';
 
-const Control = ({ children, compact, id, isEmpty, label }) => {
+const Control = ({ children, compact, id, isEmpty, label, style }) => {
   const child = (children.constructor === Array ? children[0] : children);
 
   const className = ['react-forms-control'];
@@ -19,7 +19,7 @@ const Control = ({ children, compact, id, isEmpty, label }) => {
   }
 
   return (
-    <li id={id} className={className.join(' ')}>
+    <li id={id} className={className.join(' ')} style={style}>
       <label htmlFor={child.props.name}>
         {label}
       </label>
@@ -58,6 +58,11 @@ Control.propTypes = {
    * Children should be a single child form element
    */
   children: PropTypes.element,
+
+  /**
+   * Field set style
+   */
+  style: PropTypes.object,
 };
 
 export default Control;

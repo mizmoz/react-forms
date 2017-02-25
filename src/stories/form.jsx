@@ -8,6 +8,7 @@ import Control from '../Control';
 import ColorPicker from '../element/ColorPicker';
 import ColorPalette from '../element/ColorPalette';
 import Text from '../element/Text';
+import TextArea from '../element/TextArea';
 import SliderWithText from '../element/SliderWithText';
 import Select from '../element/Select';
 import Switch from '../element/Switch';
@@ -292,6 +293,18 @@ storiesOf('Form', module).add('Simple compact form', () => (
                 compact
                 name="name"
                 value={form.values.get('name')}
+                onChange={form.onChange}
+              />
+            </Control>
+
+            <Control
+              label="Code"
+              isEmpty={Text.isEmpty(form.values.get('code'))}
+            >
+              <TextArea
+                compact
+                name="code"
+                value={form.values.get('code')}
                 onChange={form.onChange}
               />
             </Control>

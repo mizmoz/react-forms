@@ -1,6 +1,7 @@
 
 require('./form');
 require('./element/Text');
+require('./element/TextArea');
 require('./element/Select');
 require('./element/Switch');
 require('./element/SliderWithText');
