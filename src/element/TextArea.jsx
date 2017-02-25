@@ -36,14 +36,12 @@ export default class TextArea extends Base {
    * @param nextProps
    * @param nextState
    */
-  shouldComponentUpdate(nextProps, { html }) {
-    return (this.state.html !== html);
+  shouldComponentUpdate(nextProps, { focus, html }) {
+    return (this.state.html !== html || this.state.focus !== focus);
   }
 
   /**
    * Focus
-   *
-   * @param event
    */
   onFocus = () => {
     this.setState({
@@ -55,8 +53,6 @@ export default class TextArea extends Base {
 
   /**
    * Un-focus
-   *
-   * @param event
    */
   onBlur = () => {
     this.setState({
@@ -84,7 +80,7 @@ export default class TextArea extends Base {
    */
   render() {
     const { focus, value } = this.state;
-    const { name, placeholder, tabIndex } = this.props;
+    const { name, tabIndex } = this.props;
 
     const className = [
       'react-forms-textarea',

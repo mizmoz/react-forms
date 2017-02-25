@@ -7,6 +7,7 @@ import Slider from './Slider';
 import SliderWithText from './SliderWithText';
 import Switch from './Switch';
 import Text from './Text';
+import TextArea from './TextArea';
 
 module.exports = {
   ColorPalette,
@@ -17,4 +18,5 @@ module.exports = {
   SliderWithText,
   Switch,
   Text,
+  TextArea,
 };

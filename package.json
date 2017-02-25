@@ -1,6 +1,6 @@
 {
   "name": "@mizmoz/react-forms",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "React forms handler",
   "main": "lib/index.js",
   "scripts": {
